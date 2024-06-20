@@ -47,6 +47,9 @@ function App() {
             id: "4",
         },
     ];
+
+    const [errors, setErrors] = useState({});
+
     const handleOnChange = (event) => {
         const { name, value, type, checked } = event.target;
         if (type === "checkbox") {
@@ -67,7 +70,33 @@ function App() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(formData, "formData");
+        console.log("ddddd", formData);
+        if (validate()) {
+        } else {
+            console.log(errors, "errors");
+        }
+    };
+
+    const validate = () => {
+        const errors = {};
+        // Password validation
+        if (!formData.password) {
+            errors.password = "password is required";
+        } else if (formData.password && formData.password.length <= 8) {
+            errors.password = "Password must be longer than 8 characters";
+        }
+
+        //Email validation
+        if (!formData.email) errors.email = "Email is required";
+
+        //Colour validation
+        if (!formData.colour) errors.colour = "Colour is required";
+
+        //Type of tiger  validation
+        if (!formData.tigerType) errors.tigerType = "Type of tiger is required";
+
+        setErrors(errors);
+        return Object.keys(errors).length === 0;
     };
 
     return (
@@ -82,6 +111,7 @@ function App() {
                         label="Email"
                         value={formData.email}
                         onChange={handleOnChange}
+                        errors={errors.email}
                     />
                     <Input
                         type="password"
@@ -89,6 +119,7 @@ function App() {
                         label="Password"
                         value={formData.password}
                         onChange={handleOnChange}
+                        errors={errors.password}
                     />
                 </fieldset>
 
@@ -120,6 +151,7 @@ function App() {
                         label="Type of tiger"
                         value={formData.tigerType}
                         onChange={handleOnChange}
+                        errors={errors.tigerType}
                     />
                 </fieldset>
                 <fieldset>
