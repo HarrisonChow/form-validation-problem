@@ -48,6 +48,7 @@ function App() {
 
     const handleOnChange = (event) => {
         const { name, value, type, checked } = event.target;
+
         if (type === "checkbox") {
             setFormData({
                 ...formData,
@@ -56,11 +57,15 @@ function App() {
                     [name]: checked,
                 },
             });
+            delete errors.animals;
         } else {
             setFormData({
                 ...formData,
                 [name]: value,
             });
+            if (name in errors) {
+                delete errors[name];
+            }
         }
     };
 
