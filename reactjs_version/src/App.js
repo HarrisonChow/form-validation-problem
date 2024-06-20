@@ -92,8 +92,16 @@ function App() {
         //Colour validation
         if (!formData.colour) errors.colour = "Colour is required";
 
+        // Animals validation
+        const selectedAnimals = Object.values(formData.animals).filter(Boolean);
+        if (selectedAnimals.length < 2) {
+            errors.animals = "At least two animals must be chosen";
+        }
+
         //Type of tiger  validation
-        if (!formData.tigerType) errors.tigerType = "Type of tiger is required";
+        if (formData.animals.tiger && !formData.tigerType) {
+            errors.tigerType = "Type of tiger is required if Tiger is chosen";
+        }
 
         setErrors(errors);
         return Object.keys(errors).length === 0;
@@ -130,8 +138,9 @@ function App() {
                         onChange={handleOnChange}
                         name="colour"
                         label="Colour"
+                        errors={errors.colour}
                     />
-                    <div>
+                    <div className={errors.animals ? "error" : ""}>
                         <span className="label">Animal</span>
 
                         {animalList.map((animal, index) => (
@@ -144,6 +153,12 @@ function App() {
                                 onChange={handleOnChange}
                             />
                         ))}
+
+                        {errors.animals && (
+                            <span style={{ color: "red" }}>
+                                {errors.animals}
+                            </span>
+                        )}
                     </div>
                     <Input
                         type="text"

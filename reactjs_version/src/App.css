@@ -126,7 +126,8 @@ fieldset + fieldset {
     </p>
 */
 .error > input,
-.error > label {
+.error > label,
+.error > .label {
     color: red;
 }
 

@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function Dropdown({ options, name, label, onChange }) {
+export default function Dropdown({ options, name, label, onChange, errors }) {
     return (
-        <div>
+        <div className={errors ? "error" : ""}>
             <label className="label" htmlFor="colour">
                 {label}
             </label>
@@ -14,6 +14,7 @@ export default function Dropdown({ options, name, label, onChange }) {
                     </option>
                 ))}
             </select>
+            {errors && <span style={{ color: "red" }}>{errors}</span>}
         </div>
     );
 }
