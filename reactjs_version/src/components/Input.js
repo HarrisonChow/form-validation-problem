@@ -11,7 +11,7 @@ export default function Input({ type, name, label, value, onChange }) {
                 id={name}
                 name={name}
                 value={value}
-                onChange={(e) => onChange(name, e.target.value)}
+                onChange={onChange}
             />
         </div>
     );

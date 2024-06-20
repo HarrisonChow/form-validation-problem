@@ -27,30 +27,52 @@ function App() {
 
     const animalList = [
         {
-            name: "animals",
+            name: "bear",
             label: "Bear",
             id: "1",
         },
         {
-            name: "animals",
+            name: "tiger",
             label: "Tiger",
             id: "2",
         },
         {
-            name: "animals",
+            name: "snake",
             label: "Snake",
             id: "3",
         },
         {
-            name: "animals",
+            name: "donkey",
             label: "Donkey",
             id: "4",
         },
     ];
-    const handleOnChange = (name, value) => {};
+    const handleOnChange = (event) => {
+        const { name, value, type, checked } = event.target;
+        if (type === "checkbox") {
+            setFormData({
+                ...formData,
+                animals: {
+                    ...formData.animals,
+                    [name]: checked,
+                },
+            });
+        } else {
+            setFormData({
+                ...formData,
+                [name]: value,
+            });
+        }
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(formData, "formData");
+    };
+
     return (
         <div className="App">
-            <form method="post" action="">
+            <form onSubmit={handleSubmit}>
                 <h1>Fill out this awesome form</h1>
                 <fieldset>
                     <h3>Your details</h3>
@@ -96,7 +118,7 @@ function App() {
                         type="text"
                         name="tigerType"
                         label="Type of tiger"
-                        value={formData.password}
+                        value={formData.tigerType}
                         onChange={handleOnChange}
                     />
                 </fieldset>
