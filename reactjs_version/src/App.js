@@ -139,7 +139,13 @@ function App() {
                         label="Colour"
                         errors={errors.colour}
                     />
-                    <div className={errors.animals ? "error" : ""}>
+                    <div
+                        className={
+                            errors.animals
+                                ? "checkbox-group error"
+                                : "checkbox-group"
+                        }
+                    >
                         <span className="label">Animal</span>
 
                         {animalList.map((animal, index) => (
