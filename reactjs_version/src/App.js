@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Input from "./components/Input";
 import Dropdown from "./components/Dropdown";
+import Checkbox from "./components/Checkbox";
 import "./App.css";
 
 function App() {
@@ -22,6 +23,29 @@ function App() {
         { label: "Red", value: "red" },
         { label: "Black", value: "black" },
         { label: "Brown", value: "brown" },
+    ];
+
+    const animalList = [
+        {
+            name: "animals",
+            label: "Bear",
+            id: "1",
+        },
+        {
+            name: "animals",
+            label: "Tiger",
+            id: "2",
+        },
+        {
+            name: "animals",
+            label: "Snake",
+            id: "3",
+        },
+        {
+            name: "animals",
+            label: "Donkey",
+            id: "4",
+        },
     ];
     const handleOnChange = (name, value) => {};
     return (
@@ -54,41 +78,20 @@ function App() {
                         name="colour"
                         label="Colour"
                     />
-                    <p>
+                    <div>
                         <span className="label">Animal</span>
 
-                        <input
-                            type="checkbox"
-                            name="animal"
-                            value="bear"
-                            id="bear"
-                        />
-                        <label htmlFor="bear">Bear</label>
-
-                        <input
-                            type="checkbox"
-                            name="animal"
-                            value="tiger"
-                            id="tiger"
-                        />
-                        <label htmlFor="tiger">Tiger</label>
-
-                        <input
-                            type="checkbox"
-                            name="animal"
-                            value="snake"
-                            id="snake"
-                        />
-                        <label htmlFor="snake">Snake</label>
-
-                        <input
-                            type="checkbox"
-                            name="animal"
-                            value="donkey"
-                            id="donkey"
-                        />
-                        <label htmlFor="donkey">Donkey</label>
-                    </p>
+                        {animalList.map((animal, index) => (
+                            <Checkbox
+                                key={index}
+                                label={animal.label}
+                                value={formData.animals}
+                                name={animal.name}
+                                id={animal.id}
+                                onChange={handleOnChange}
+                            />
+                        ))}
+                    </div>
                     <Input
                         type="text"
                         name="tigerType"
@@ -98,9 +101,9 @@ function App() {
                     />
                 </fieldset>
                 <fieldset>
-                    <p>
+                    <div>
                         <input type="submit" value="Create account" />
-                    </p>
+                    </div>
                 </fieldset>
             </form>
         </div>
