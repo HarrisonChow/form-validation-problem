@@ -6,7 +6,12 @@ export default function Dropdown({ options, name, label, onChange, errors }) {
             <label className="label" htmlFor="colour">
                 {label}
             </label>
-            <select onChange={onChange} name={name} id={name}>
+            <select
+                onChange={onChange}
+                name={name}
+                id={name}
+                aria-describedby={errors ? name + " Error" : null}
+            >
                 <option value="">Choose {name}</option>
                 {options.map((option, index) => (
                     <option key={index} value={option.value}>

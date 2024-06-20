@@ -12,6 +12,7 @@ export default function Input({ type, name, label, value, onChange, errors }) {
                 name={name}
                 value={value}
                 onChange={onChange}
+                aria-describedby={errors ? name + " Error" : null}
             />
             {errors && <span style={{ color: "red" }}>{errors}</span>}
         </div>
