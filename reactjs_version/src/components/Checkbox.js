@@ -6,11 +6,11 @@ export default function Checkbox({ label, value, name, id, onChange }) {
             <input
                 type="checkbox"
                 name={name}
-                id={id}
+                id={name}
                 value={value}
                 onChange={onChange}
             />
-            <label htmlFor="id">{label}</label>
+            <label htmlFor={name}>{label}</label>
         </>
     );
 }

@@ -29,22 +29,18 @@ function App() {
         {
             name: "bear",
             label: "Bear",
-            id: "1",
         },
         {
             name: "tiger",
             label: "Tiger",
-            id: "2",
         },
         {
             name: "snake",
             label: "Snake",
-            id: "3",
         },
         {
             name: "donkey",
             label: "Donkey",
-            id: "4",
         },
     ];
 
@@ -152,7 +148,6 @@ function App() {
                                 label={animal.label}
                                 value={formData.animals}
                                 name={animal.name}
-                                id={animal.id}
                                 onChange={handleOnChange}
                             />
                         ))}
