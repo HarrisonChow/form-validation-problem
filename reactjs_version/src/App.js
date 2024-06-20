@@ -1,29 +1,41 @@
+import React, { useState } from "react";
+import Input from "./components/Input";
 import "./App.css";
 
 function App() {
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+        colour: "",
+        animals: {
+            bear: false,
+            tiger: false,
+            snake: false,
+            donkey: false,
+        },
+        tigerType: "",
+    });
+    const handleOnChange = (name, value) => {};
     return (
         <div className="App">
             <form method="post" action="">
                 <h1>Fill out this awesome form</h1>
                 <fieldset>
                     <h3>Your details</h3>
-                    <p>
-                        <label className="label" htmlFor="email">
-                            Email
-                        </label>
-                        <input type="text" id="email" name="email" />
-                    </p>
-                    <p>
-                        <label className="label" htmlFor="password">
-                            Password
-                        </label>
-                        <input
-                            className="error"
-                            type="password"
-                            id="password"
-                            name="username"
-                        />
-                    </p>
+                    <Input
+                        type="email"
+                        name="email"
+                        label="Email"
+                        value={formData.email}
+                        onChange={handleOnChange}
+                    />
+                    <Input
+                        type="password"
+                        name="password"
+                        label="Password"
+                        value={formData.password}
+                        onChange={handleOnChange}
+                    />
                 </fieldset>
 
                 <fieldset>
@@ -76,12 +88,13 @@ function App() {
                         />
                         <label htmlFor="donkey">Donkey</label>
                     </p>
-                    <p>
-                        <label className="label" htmlFor="tiger_type">
-                            Type of tiger
-                        </label>
-                        <input type="text" name="tiger_type" id="tiger_type" />
-                    </p>
+                    <Input
+                        type="text"
+                        name="tigerType"
+                        label="Type of tiger"
+                        value={formData.password}
+                        onChange={handleOnChange}
+                    />
                 </fieldset>
                 <fieldset>
                     <p>
