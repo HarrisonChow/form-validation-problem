@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Input from "./components/Input";
+import Dropdown from "./components/Dropdown";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,13 @@ function App() {
         },
         tigerType: "",
     });
+    const colourOptions = [
+        { label: "Blue", value: "blue" },
+        { label: "Green", value: "green" },
+        { label: "Red", value: "red" },
+        { label: "Black", value: "black" },
+        { label: "Brown", value: "brown" },
+    ];
     const handleOnChange = (name, value) => {};
     return (
         <div className="App">
@@ -40,19 +48,12 @@ function App() {
 
                 <fieldset>
                     <h3>Your animal</h3>
-                    <p>
-                        <label className="label" htmlFor="colour">
-                            Colour
-                        </label>
-                        <select name="colour" id="colour">
-                            <option value="">Choose colour</option>
-                            <option value="blue">Blue</option>
-                            <option value="green">Green</option>
-                            <option value="red">Red</option>
-                            <option value="black">Black</option>
-                            <option value="brown">Brown</option>
-                        </select>
-                    </p>
+                    <Dropdown
+                        options={colourOptions}
+                        onChange={handleOnChange}
+                        name="colour"
+                        label="Colour"
+                    />
                     <p>
                         <span className="label">Animal</span>
 
