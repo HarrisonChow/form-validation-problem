@@ -70,10 +70,9 @@ function App() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("ddddd", formData);
         if (validate()) {
-        } else {
-            console.log(errors, "errors");
+            // Handle form submission
+            console.log("Form submitted successfully", formData);
         }
     };
 
@@ -87,7 +86,11 @@ function App() {
         }
 
         //Email validation
-        if (!formData.email) errors.email = "Email is required";
+        if (!formData.email) {
+            errors.email = "Email is required";
+        } else if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
+            errors.email = "Invalid email address";
+        }
 
         //Colour validation
         if (!formData.colour) errors.colour = "Colour is required";
@@ -114,7 +117,7 @@ function App() {
                 <fieldset>
                     <h3>Your details</h3>
                     <Input
-                        type="email"
+                        type="text"
                         name="email"
                         label="Email"
                         value={formData.email}
